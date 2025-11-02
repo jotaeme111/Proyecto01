@@ -136,10 +136,11 @@ else:
             # Aunque funciona con listas ordenada, permite búsquedas rápidas y confiables
 
 ''' 6. Medir y comparar tiempos de ejecución de ambas versiones (actual de la empresa y la optimizada por ustedes) con time o timeit.''' 
-# Aqui va el codigo del Laboratorio 3, pero primero hay que crear el df . 
+# Aqui va el codigo del Laboratorio 3, pero primero hay que crear el df pero hay que preguntarle a la profe que columnas usar, porque no especifica que variables debe tener el df. . 
 
 '''7. Graficar los resultados con matplotlib.'''
-#  Aqui tambien va el codigo del Laboratorio 3, pero primero hay que crear el df . 
+#  Aqui tambien va el codigo del Laboratorio 3, pero primero hay que crear el dfpero hay que preguntarle a la profe que columnas usar, porque no especifica que variables debe tener el df. . 
 
 ''' 8. Implementar un módulo de grafos que resuelva un problema de negocio, para ello cree un código y que permita ver un resultado medible. Ejemplo: poder visualizar las preferencias de los clientes. '''
+
 # Tengo que consultarle a la profe el lunes que diablos es esto. 
