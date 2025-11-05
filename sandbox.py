@@ -1,3 +1,15 @@
+'''
+Código Fuente (2%)
+● Implementación de algoritmos ineficientes: Correcta simulación de la versión actual.
+● Implementación optimizada: Algoritmos más eficientes.
+● Generación de dataset: Dataset realista y utilizable.
+● Graficación de resultados: Correcta y bien presentada.
+● Módulo de grafos: Funcional y con salida medible.
+● Utilización de las herramientas solicitadas.
+● Estructuras, modularidad, reglas básicas de Python.
+● Funcionalidad completa.
+'''
+
 ''' 1. Generar un dataset funcional de usuarios, series/películas y lo que necesite con pandas y numpy. Este es simulado y manejables (10000 registros) '''
 '''
 La profe dice que: 1. 10000 registros en total y con respecto a esto usuarios, películas y "lo que necesite" es porque dependiendo de lo que usted quiera realizar, 
@@ -146,4 +158,5 @@ else:
 ''' 8. Implementar un módulo de grafos que resuelva un problema de negocio, para ello cree un código y que permita ver un resultado medible. Ejemplo: poder visualizar las preferencias de los clientes. '''
 
 # La profe dice que: Se necesita investigar sobre Grafos y sí ocupa código y sí se necesita algo visual (para la parte medible) por ejemplo una gráfica
+
 
