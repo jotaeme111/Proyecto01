@@ -22,7 +22,7 @@ b) Búsqueda por nombre de serie,
 c) Búsqueda por similitud de texto de película.
 '''
 
-# a) Bubble Sort. (Tomado de la presentacion de 'Algoritmos de Ordenamiento').
+# a) Bubble Sort. (Tomado de la presentacion de 'Algoritmos de Ordenamiento'). (Algoritmo Ineficiente).
 def bubble_sort(arr):
     n = len(arr)
     for i in range(n - 1):
@@ -35,20 +35,20 @@ arreglo = [64, 34, 25, 12]
 bubble_sort(arreglo)
 print("Arreglo ordenado con Bubble Sort:", arreglo)
 
-# b) Busqueda Lineal. (Tomado de la presentacion de 'Algoritmos de Busqueda').
+# b) Busqueda Lineal. (Tomado de la presentacion de 'Algoritmos de Busqueda'). (Algoritmo Ineficiente).
 def busqueda_lineal(lista, objetivo):
     for i in range(len(lista)):
         if lista[i] == objetivo:
             return i
     return -1
 
-numeros = [10, 25, 30, 45, 50]
-buscar = 45
-resultado = busqueda_lineal(numeros, buscar)
+# numeros = [10, 25, 30, 45, 50]
+# buscar = 45
+# resultado = busqueda_lineal(numeros, buscar)
 
-print("Resultado de la búsqueda:", resultado)
+# print("Resultado de la búsqueda:", resultado)
 
-# c) Fuerza bruta. (Tomado de la presentacion de 'Procesamiento de Cadenas').
+# c) Fuerza bruta. (Tomado de la presentacion de 'Procesamiento de Cadenas'). (Algoritmo Ineficiente).
 def naive_search(text, pattern):
     n = len(text)
     m = len(pattern)
@@ -79,7 +79,7 @@ def naive_search(text, pattern):
 
 '''4. Implementar versiones optimizadas de los algoritmos de ordenamiento y búsqueda, mencionados en el punto 2. Deben ser codificados.'''
 
-# Merge Sort: (Tomado de la presentacion 'Algoritmos de Ordenacion')
+# Merge Sort: (Tomado de la presentacion 'Algoritmos de Ordenacion') (Algoritmo Eficiente)
 def merge_sort(arr):
     if len(arr) < 2:
         return arr
@@ -106,11 +106,11 @@ def merge(left, right):
 
     return result
 
-# Ejemplo de uso
-nums = [38, 27, 43, 3, 9, 82, 10]
-print("Arreglo ordenado con Merge Sort:", merge_sort(nums))
+# # Ejemplo de uso
+# nums = [38, 27, 43, 3, 9, 82, 10]
+# print("Arreglo ordenado con Merge Sort:", merge_sort(nums))
 
-# Binary Search: (Tomado de la presentacion 'Algoritmos de Busqueda')
+# Binary Search: (Tomado de la presentacion 'Algoritmos de Busqueda') (Algoritmo Eficiente)
 def busqueda_binaria(lista, objetivo):
     inicio = 0
     fin = len(lista) - 1
@@ -124,15 +124,61 @@ def busqueda_binaria(lista, objetivo):
             fin = medio - 1
     return -1
 
-# Ejemplo de uso
-numeros = [10, 20, 30, 40, 50, 60, 70]
-buscar = 40
-resultado = busqueda_binaria(numeros, buscar)
+# # Ejemplo de uso
+# numeros = [10, 20, 30, 40, 50, 60, 70]
+# buscar = 40
+# resultado = busqueda_binaria(numeros, buscar)
 
-if resultado != -1:
-    print(f"Elemento encontrado en el índice {resultado}")
-else:
-    print("Elemento no encontrado")
+# if resultado != -1:
+#     print(f"Elemento encontrado en el índice {resultado}")
+# else:
+#     print("Elemento no encontrado")
+
+
+# Algotirmo Boyer Moore Horspool (Tomado de la presentacion de 'Procesamiento de cadenas') (Algoritmo Eficiente)
+def build_shift_table(pattern):
+    m = len(pattern)
+    table = {}
+
+    # Construcción de la tabla de desplazamientos
+    for i in range(m - 1):
+        table[pattern[i]] = m - 1 - i
+
+    # Valor por defecto si el carácter no está en el patrón
+    table['*'] = m
+    return table
+
+
+def horspool_search(text, pattern):
+    m = len(pattern)
+    n = len(text)
+    table = build_shift_table(pattern)
+
+    print("Tabla de desplazamientos:", table)
+
+    k = m - 1
+    while k < n:
+        i = 0
+        while i < m and pattern[m - 1 - i] == text[k - i]:
+            i += 1
+        if i == m:
+            print("Patrón encontrado en la posición", k - m + 1)
+            return k - m + 1
+        else:
+            mismatched_char = text[k]
+            shift = table.get(mismatched_char, table['*'])
+            print(f"No coincide en posición {k}. Carácter: '{mismatched_char}' → mover {shift} posiciones.")
+            k += shift
+
+    print("No se encontró el patrón en el texto.")
+    return -1
+
+
+# # Ejemplo de uso
+# texto = "Este es un ejemplo de búsqueda con Horspool"
+# patron = "ejemplo"
+
+# horspool_search(texto, patron)
 
 
 '''5. Especificar su nueva notación y la razón que justifique la escogencia de sus algoritmos para cada caso.''' 
@@ -142,12 +188,19 @@ else:
             # Siempre corre en O(n\log n), incluso en el peor caso.
 
 
-
     # Binary Search: Tiene una complejidad en el peor caso de O(log (n)) y en el mejor caso de un O(1).
         # Por que? 
             # Consume menos memoria (no hay llamadas recursivas en la pila).
             # Suele ser más rápido en la práctica porque evita la sobrecarga de la recursión.
             # Aunque funciona con listas ordenada, permite búsquedas rápidas y confiables
+
+
+    #Boyer-Moore Horspool: Tiene una complejidad promedio O(n/m).
+        # Por qué?
+            # Aprovecha desplazamientos inteligentes basados en el carácter que no coincide.
+            # En la práctica suele ser más rápido que otros algoritmos porque evita comparar carácter por carácter.
+            # Es ideal para textos largos y patrones relativamente cortos.
+            # Aunque su peor caso es O(n*m), rara vez ocurre, por lo que se considera muy eficiente en escenarios reales.
 
 ''' 6. Medir y comparar tiempos de ejecución de ambas versiones (actual de la empresa y la optimizada por ustedes) con time o timeit.''' 
 # Medir algoritmos eficientes e ineficientes con el df.  Lo mismo de la investigacion.
@@ -157,6 +210,7 @@ else:
 
 ''' 8. Implementar un módulo de grafos que resuelva un problema de negocio, para ello cree un código y que permita ver un resultado medible. Ejemplo: poder visualizar las preferencias de los clientes. '''
 
-# La profe dice que: Se necesita investigar sobre Grafos y sí ocupa código y sí se necesita algo visual (para la parte medible) por ejemplo una gráfica
+# La profe dice que: Se necesita investigar sobre Grafos y sí ocupa código y sí se necesita algo visual (para la parte medible) por ejemplo una gráfica.
+
 
 
