@@ -1,6 +1,6 @@
 import pandas as pd
 import time
-from sandbox_editado import bubble_sort, busqueda_lineal, naive_search
+from sandbox import bubble_sort, busqueda_lineal, naive_search
 import matplotlib.pyplot as plt
 
 df = pd.read_excel("dataset.xlsx")

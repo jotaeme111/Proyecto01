@@ -27,8 +27,10 @@ def bubble_sort(arr):
     n = len(arr)
     for i in range(n - 1):
         for j in range(n - 1 - i):
-            if arr[j] > arr[j + 1]:
+            if str(arr[j]).lower() > str(arr[j + 1]).lower():
                 arr[j], arr[j + 1] = arr[j + 1], arr[j]
+    return arr
+#Sea cambio para que no haya problemas entre int y strings
 
 # Llamado
 arreglo = [64, 34, 25, 12]
@@ -49,27 +51,49 @@ def busqueda_lineal(lista, objetivo):
 # print("Resultado de la búsqueda:", resultado)
 
 # c) Fuerza bruta. (Tomado de la presentacion de 'Procesamiento de Cadenas'). (Algoritmo Ineficiente).
-def naive_search(text, pattern):
-    n = len(text)
-    m = len(pattern)
+def naive_search(lista, pattern):
+    #Ignora mayúsculas y minúsculas.
+    #Busca coincidencias exactas o parciales dentro de cada texto de una lista.
+
+
     comparisons = 0
+    encontrados = []
+    pattern = pattern.lower()
 
-    for start in range(n - m + 1):
-        i = start  # posición en el texto
-        j = 0      # posición en el patrón
+    # Recorre cada elemento de la lista
+    for text in lista:
+        text = str(text).lower()
+        n = len(text)
+        m = len(pattern)
 
-        while j < m and text[i] == pattern[j]:
-            comparisons += 1
-            i += 1
-            j += 1
+        for start in range(n - m + 1):
+            i = start
+            j = 0
 
-        if j < m:
-            comparisons += 1
+            # Comparar carácter por carácter
+            while j < m and text[i] == pattern[j]:
+                comparisons += 1
+                i += 1
+                j += 1
 
-        if j == m:
-            print(f"Pattern found at index {start}")
+            if j < m:
+                comparisons += 1
 
-    print(f"Total comparisons: {comparisons}")
+            # Si el patrón completo fue encontrado en el texto
+            if j == m:
+                encontrados.append(text)
+                break  # pasa al siguiente texto
+
+    # Mostrar resultados
+    if encontrados:
+        print(" Se han encontrado las siguientes coincidencias:\n")
+        for e in encontrados:
+            print(" -", e)
+    else:
+        print("No se encontró ninguna coincidencia.")
+
+    print(f"\nTotal comparisons: {comparisons}")
+
 
 ''' 3. Analizar los algoritmos del sistema actual e identificar su complejidad temporal en notación Big-O.'''
 
@@ -124,6 +148,24 @@ def busqueda_binaria(lista, objetivo):
             fin = medio - 1
     return -1
 
+def busqueda_binaria_main(lista,objetivo):
+    inicio = 0
+    fin = len(lista) - 1
+    objetivo = objetivo.lower()
+
+    while inicio <= fin:
+        medio = (inicio + fin) // 2
+        elemento = str(lista[medio]).lower()
+
+        if elemento == objetivo:
+            return medio
+        elif elemento < objetivo:
+            inicio = medio + 1
+        else:
+            fin = medio - 1
+    return -1
+
+
 # # Ejemplo de uso
 # numeros = [10, 20, 30, 40, 50, 60, 70]
 # buscar = 40
@@ -173,6 +215,23 @@ def horspool_search(text, pattern):
     print("No se encontró el patrón en el texto.")
     return -1
 
+def horspool_search_Main(text, pattern): #El horspool para el main
+    m = len(pattern)
+    n = len(text)
+    table = build_shift_table(pattern)
+
+    k = m - 1
+    while k < n:
+        i = 0
+        while i < m and pattern[m - 1 - i] == text[k - i]:
+            i += 1
+        if i == m:
+            return k - m + 1
+        else:
+            mismatched_char = text[k]
+            shift = table.get(mismatched_char, table['*'])
+            k += shift
+    return -1
 
 # # Ejemplo de uso
 # texto = "Este es un ejemplo de búsqueda con Horspool"

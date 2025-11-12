@@ -1,6 +1,6 @@
 import pandas as pd
 import time
-from sandbox_editado import merge_sort, busqueda_binaria_main, horspool_search_Main
+from sandbox import merge_sort, busqueda_binaria_main, horspool_search_Main
 import matplotlib.pyplot as plt
 
 df = pd.read_excel("dataset.xlsx")
