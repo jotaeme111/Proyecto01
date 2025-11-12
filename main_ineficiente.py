@@ -42,11 +42,17 @@ while True:
         print(e)
 
 if tiempos:
-    plt.figure(figsize=(8, 5))
-    plt.bar(tiempos.keys(), tiempos.values(), color=['#E57373', '#FFD54F', '#81C784'])
-    plt.title("Comparación de tiempos - Algoritmos Ineficientes")
+    keys = list(tiempos.keys())
+    values = list(tiempos.values())
+    x = np.arange(len(keys))
+
+    plt.figure(figsize=(9,6))
+    plt.plot(x, values, marker='o', linestyle='-', linewidth=2)
+    plt.xticks(x, keys, rotation=15)
+    plt.title("Comparación de tiempos - Algoritmos Eficientes")
     plt.ylabel("Tiempo (segundos)")
     plt.xlabel("Algoritmo")
-    plt.grid(axis='y', linestyle='--', alpha=0.7)
+    plt.grid(True, linestyle='--', alpha=0.4)
     plt.tight_layout()
     plt.show()
+
