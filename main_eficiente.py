@@ -2,7 +2,7 @@ import pandas as pd
 import time
 from sandbox import merge_sort, busqueda_binaria_main, horspool_search_Main
 import matplotlib.pyplot as plt
-
+import numpy as np
 df = pd.read_excel("dataset.xlsx")
 valores = df['title'].astype(str).str.lower().tolist()[:1000]
 
@@ -80,5 +80,6 @@ if tiempos:
     plt.legend()
     plt.tight_layout()
     plt.show()
+
 
 
