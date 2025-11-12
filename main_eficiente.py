@@ -53,11 +53,17 @@ while True:
         print(f"\nTiempo total de búsqueda: {fin - inicio:.6f} segundos\n")
 
 if tiempos:
-    plt.figure(figsize=(8, 5))
-    plt.bar(tiempos.keys(), tiempos.values(), color=['#64B5F6', '#4DB6AC', '#AED581'])
+    keys = list(tiempos.keys())
+    values = list(tiempos.values())
+    x = np.arange(len(keys))
+
+    plt.figure(figsize=(9,6))
+    plt.plot(x, values, marker='o', linestyle='-', linewidth=2)
+    plt.xticks(x, keys, rotation=15)
     plt.title("Comparación de tiempos - Algoritmos Eficientes")
     plt.ylabel("Tiempo (segundos)")
     plt.xlabel("Algoritmo")
-    plt.grid(axis='y', linestyle='--', alpha=0.7)
+    plt.grid(True, linestyle='--', alpha=0.4)
     plt.tight_layout()
     plt.show()
+
