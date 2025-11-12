@@ -32,11 +32,6 @@ def bubble_sort(arr):
     return arr
 #Sea cambio para que no haya problemas entre int y strings
 
-# Llamado
-arreglo = [64, 34, 25, 12]
-bubble_sort(arreglo)
-print("Arreglo ordenado con Bubble Sort:", arreglo)
-
 # b) Busqueda Lineal. (Tomado de la presentacion de 'Algoritmos de Busqueda'). (Algoritmo Ineficiente).
 def busqueda_lineal(lista, objetivo):
     for i in range(len(lista)):
@@ -270,6 +265,7 @@ def horspool_search_Main(text, pattern): #El horspool para el main
 ''' 8. Implementar un módulo de grafos que resuelva un problema de negocio, para ello cree un código y que permita ver un resultado medible. Ejemplo: poder visualizar las preferencias de los clientes. '''
 
 # La profe dice que: Se necesita investigar sobre Grafos y sí ocupa código y sí se necesita algo visual (para la parte medible) por ejemplo una gráfica.
+
 
 
 
