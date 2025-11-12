@@ -2,7 +2,7 @@ from grafo import *
 
 if __name__ == "__main__":
     # Ejecución demo: intenta detectar columnas y genera salida medible + gráfico.
-    df = load_dataset("dataset.xlsx")  # ajustar si su archivo tiene otro nombre
+    df = load_dataset("dataset.xlsx")
     user_col, item_col = detect_user_and_item_columns(df)
     if not item_col:
         raise SystemExit("No se pudo detectar columna de items (intente renombrar a 'title' o 'movie').")
