@@ -43,14 +43,16 @@ while True:
     print("\nResultados con algoritmos ineficientes:")
 
     inicio = time.time()
-    indice = busqueda_lineal(valores_inef, busqueda)
+    indice = busqueda_lineal(valores_ef, busqueda)
     fin = time.time()
-    tiempos_inef["Búsqueda Lineal"] = fin - inicio
+    total= fin-inicio
+    tiempos_inef["Búsqueda Lineal"] = total
+    print(fin-inicio)
 
     if indice != -1:
         print(f"\n'{busqueda}' encontrado exactamente en la posición {indice}")
         print(f"Tiempo de búsqueda lineal: {fin - inicio:.6f} segundos\n")
-        tiempos_inef["Naive Search"] = 0.0
+        tiempos_inef["Búsqueda Lineal"] = fin-inicio
     else:
         print(f"\n'{busqueda}' no encontrado exactamente, buscando similitudes\n")
         inicio = time.time()
@@ -70,9 +72,11 @@ while True:
         print(f"\nCoincidencia exacta encontrada:")
         print(f" {valores_ef[indice]}")
         print(f"Tiempo de búsqueda binaria: {fin - inicio:.6f} segundos\n")
-        tiempos_ef["Horspool"] = 0.0
+        tiempos_ef["Búsqueda Binaria"] = fin-inicio
     else:
-        print(f"\n'{busqueda}' no se encontró exactamente. Buscando coincidencias similares.\n")
+        print(f"\n'{busqueda}' no se encontró exactamente")
+        print(f"Tiempo de Búsqueda Binaria: {tiempos_ef["Búsqueda Binaria"]}")
+        print("Buscando coincidencias similares.\n")
         encontrados = []
         inicio = time.time()
         for titulo in valores_ef:
@@ -87,7 +91,7 @@ while True:
                 print(" -", e)
         else:
             print("No se encontraron coincidencias similares.")
-        print(f"\nTiempo total de búsqueda con Horspool: {fin - inicio:.6f} segundos\n")
+        print(f"\nTiempo total de búsqueda con Horspool: {tiempos_ef["Horspool"]} segundos\n")
 
 print("\nGenerando gráficas de comparación...")
 
