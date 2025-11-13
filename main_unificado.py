@@ -12,7 +12,7 @@ from sandbox import (
 )
 
 df = pd.read_excel("dataset.xlsx")
-valores_base = df['title'].astype(str).str.lower().tolist()[:1000]
+valores_base = df['title'].astype(str).str.lower().tolist()[:6138]
 
 valores_inef = valores_base.copy()
 valores_ef = valores_base.copy()
